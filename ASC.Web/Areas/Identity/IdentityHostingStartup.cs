@@ -14,14 +14,14 @@ namespace ASC.Web.Areas.Identity
     {
         public void Configure(IWebHostBuilder builder)
         {
-            builder.ConfigureServices((context, services) => {
-                services.AddDbContext<ASCWebContext>(options =>
-                    options.UseSqlServer(
-                        context.Configuration.GetConnectionString("ASCWebContextConnection")));
+            //builder.ConfigureServices((context, services) => {
+            //    services.AddDbContext<ASCWebContext>(options =>
+            //        options.UseSqlServer(
+            //            context.Configuration.GetConnectionString("ASCWebContextConnection")));
 
-                services.AddDefaultIdentity<IdentityUser>(options => options.SignIn.RequireConfirmedAccount = true)
-                    .AddEntityFrameworkStores<ASCWebContext>();
-            });
+            //    services.AddDefaultIdentity<IdentityUser>(options => options.SignIn.RequireConfirmedAccount = true)
+            //        .AddEntityFrameworkStores<ASCWebContext>();
+            //});
         }
     }
 }

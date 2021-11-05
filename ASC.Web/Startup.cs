@@ -90,7 +90,7 @@ namespace ASC.Web
 
             using (var scope = app.ApplicationServices.CreateScope())
             {
-              //  await storageSeed.Seed(scope.ServiceProvider.GetService<UserManager<ApplicationUser>>(),scope.ServiceProvider.GetService<RoleManager<ApplicationRoles>>(),scope.ServiceProvider.GetService<IOptions<ApplicationSettings>>());
+                //await storageSeed.Seed(scope.ServiceProvider.GetService<UserManager<ApplicationUser>>(), scope.ServiceProvider.GetService<RoleManager<ApplicationRoles>>(), scope.ServiceProvider.GetService<IOptions<ApplicationSettings>>());
             }
         }
     }
