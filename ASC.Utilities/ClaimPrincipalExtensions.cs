@@ -14,13 +14,14 @@ namespace ASC.Utilities
                 return null;
             return new CurrentUser
             {
-                Name = principal.Claims.Where(c => c.Type == ClaimTypes.Name).Select(c =>
-                c.Value).SingleOrDefault(),
-                Email = principal.Claims.Where(c => c.Type == ClaimTypes.Email).Select(c =>
-                c.Value).SingleOrDefault(),
-                Roles = principal.Claims.Where(c => c.Type == ClaimTypes.Role).Select(c =>
-                c.Value).ToArray(),
-                IsActive = Boolean.Parse(principal.Claims.Where(c => c.Type == "IsActive").Select(c => c.Value).SingleOrDefault()),
+                Name = principal.Claims.Where(c => c.Type == ClaimTypes.Name)
+                .Select(c => c.Value).SingleOrDefault(),
+                Email = principal.Claims.Where(c => c.Type == ClaimTypes.Email)
+                .Select(c => c.Value).SingleOrDefault(),
+                Roles = principal.Claims.Where(c => c.Type == ClaimTypes.Role)
+                .Select(c => c.Value).ToArray(),
+                IsActive = Boolean.Parse(principal.Claims.Where(c => c.Type == "IsActive")
+                .Select(c => c.Value).SingleOrDefault()),
             };
         }
     }
