@@ -16,6 +16,7 @@ using ASC.Web.Models;
 namespace ASC.Web.Areas.Identity.Pages.Account
 {
     [AllowAnonymous]
+    [ValidateAntiForgeryToken]
     public class LoginModel : PageModel
     {
         private readonly UserManager<ApplicationUser> _userManager;
@@ -62,7 +63,7 @@ namespace ASC.Web.Areas.Identity.Pages.Account
 
             ReturnUrl = returnUrl;
         }
-
+        
         public async Task<IActionResult> OnPostAsync(string returnUrl = null)
         {
             //returnUrl = returnUrl ?? Url.Content("~/");
@@ -76,7 +77,7 @@ namespace ASC.Web.Areas.Identity.Pages.Account
                     return Page();
                 }
                 var list = await _userManager.GetClaimsAsync(user);
-                var isActive = Boolean.Parse(list.SingleOrDefault(p => p.Type == "isActive").Value);
+                var isActive = Boolean.Parse(list.SingleOrDefault(p => p.Type == "IsActive").Value);
                 if (!isActive)
                 {
                     ModelState.AddModelError(string.Empty, "Account has been locked");
@@ -84,10 +85,10 @@ namespace ASC.Web.Areas.Identity.Pages.Account
                 }
                 // This doesn't count login failures towards account lockout
                 // To enable password failures to trigger account lockout, set lockoutOnFailure: true
-                var result = await _signInManager.PasswordSignInAsync(Input.Email, Input.Password, Input.RememberMe, lockoutOnFailure: false);
+                var result = await _signInManager.PasswordSignInAsync(user.UserName, Input.Password, Input.RememberMe, lockoutOnFailure: false);
                 if (result.Succeeded)
                 {
-                    _logger.LogInformation("User logged in.");
+                    _logger.LogInformation(1, "User logged in.");
                     if (!String.IsNullOrWhiteSpace(returnUrl))
                         return RedirectToAction(returnUrl);
                     else

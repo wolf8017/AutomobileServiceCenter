@@ -38,5 +38,10 @@ namespace ASC.Web.Controllers
             ViewData["Message"] = "Your contact page.";
             return View();
         }
+
+        public IActionResult Error()
+        {
+            return View();
+        }
     }
 }

@@ -56,7 +56,7 @@ namespace ASC.Web
             services.AddRazorPages();
             services.AddDistributedMemoryCache();
             services.AddSession();
-
+            services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();
             services.AddOptions();
             services.Configure<ApplicationSettings>(Configuration.GetSection("AppSettings"));
 
