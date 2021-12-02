@@ -9,6 +9,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Folder Include="BaseTypes\Contants\" />
     <Folder Include="Models\" />
   </ItemGroup>
 

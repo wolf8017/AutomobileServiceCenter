@@ -6,6 +6,7 @@
 
   <ItemGroup>
     <PackageReference Include="ElCamino.AspNetCore.Identity.AzureTable" Version="5.1.0" />
+    <PackageReference Include="MailKit" Version="2.15.0" />
     <PackageReference Include="Microsoft.AspNetCore.Identity.EntityFrameworkCore" Version="3.1.20" />
     <PackageReference Include="Microsoft.AspNetCore.Identity.UI" Version="3.1.20" />
     <PackageReference Include="Microsoft.AspNetCore.Session" Version="2.2.0" />

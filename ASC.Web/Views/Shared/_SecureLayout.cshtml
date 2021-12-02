@@ -79,7 +79,7 @@
         <li>
             <ul class="collapsible collapsible-accordion">
                 <li>
-                    <a class="collapsible-header">Settings<i class="materialicons">
+                    <a class="collapsible-header">Settings<i class="material-icons">
                         settings</i>
                     </a>
                     <div class="collapsible-body">
@@ -151,6 +151,8 @@
 <form class="hide" method="post" id="logout_form" asp-area="Identity" asp-page="/Account/Logout">
     <input type="submit" value="Logout" />
 </form>
+<form class="hide" method="post" id="resetPassword_form" asp-area="Identity" asp-page="/Account/InitiateResetPassword">
+</form>
 
 @section Scripts{
     @RenderSection("Scripts", required:false)
@@ -159,6 +161,10 @@
         $(function () {
             $('#ancrLogout').click(function () {
                 $('#logout_form').submit();
+            });
+
+            $('#ancrResetPassword').click(function () {
+                $('#resetPassword_form').submit();
             });
         });
     </script>

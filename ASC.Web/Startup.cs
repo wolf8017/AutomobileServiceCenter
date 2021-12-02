@@ -17,6 +17,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using ASC.Web.Service;
 
 namespace ASC.Web
 {
@@ -61,6 +62,8 @@ namespace ASC.Web
             services.Configure<ApplicationSettings>(Configuration.GetSection("AppSettings"));
 
             services.AddSingleton<IIdentitySeed, IdentitySeed>();
+            services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();
+            services.AddSingleton<IEmailSender, AuthMessageSender>();
             //services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();
             //services.AddSingleton<IEmailSender, AuthMessageSender>();
         }
@@ -97,8 +100,8 @@ namespace ASC.Web
 
             using (var scope = app.ApplicationServices.CreateScope())
             {
-                await storageSeed.Seed(scope.ServiceProvider.GetService<UserManager<ApplicationUser>>(), 
-                    scope.ServiceProvider.GetService<RoleManager<ApplicationRoles>>(), 
+                await storageSeed.Seed(scope.ServiceProvider.GetService<UserManager<ApplicationUser>>(),
+                    scope.ServiceProvider.GetService<RoleManager<ApplicationRoles>>(),
                     scope.ServiceProvider.GetService<IOptions<ApplicationSettings>>());
             }
         }
